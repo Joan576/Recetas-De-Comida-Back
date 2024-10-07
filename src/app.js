@@ -17,5 +17,7 @@ app.use(express.json());
 // Rutas
 app.post('/usuarios', userController.guardarUsuario);
 app.get('/usuarios', userController.obtenerUsuarios);
+app.post('/login', userController.loginUsuario);
+app.post('/register', userController.guardarUsuario);
 
 module.exports = app;
