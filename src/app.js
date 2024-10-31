@@ -1,23 +1,27 @@
-// En app.js
+// src/app.js
 
 const express = require('express');
 const config = require('./config');
 const cors = require('cors');
-const userController = require('./controllers/userController/userController');
+const userRoutes = require('./routes/userRoutes'); // Importa las rutas de usuario
+const profileRoutes = require('./routes/profileRoutes'); // Importa las rutas de perfil
+const path = require('path');
 
 const app = express();
 
-/// Configuración
+// Configuración
 app.set('port', config.app.port);
 
 app.use(cors());
 // Middleware para permitir el análisis de cuerpo JSON
 app.use(express.json());
 
+// Agregar esta línea para servir archivos estáticos
+app.use('/uploads', express.static('uploads'));
+
 // Rutas
-app.post('/usuarios', userController.guardarUsuario);
-app.get('/usuarios', userController.obtenerUsuarios);
-app.post('/login', userController.loginUsuario);
-app.post('/register', userController.guardarUsuario);
+app.use('/api/usuarios', userRoutes); // Todas las rutas de usuario bajo /api/usuarios
+app.use('/api', profileRoutes); // Las rutas de perfil estarán bajo /api/profile
 
 module.exports = app;
+
