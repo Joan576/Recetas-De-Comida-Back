@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // Agregar esta línea para servir archivos estáticos
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Rutas
 app.use('/api/usuarios', userRoutes); // Todas las rutas de usuario bajo /api/usuarios
