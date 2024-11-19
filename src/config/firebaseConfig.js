@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../../../Trabajos U/Programacion Web/Proyecto_Recetas/novamarketapp-firebase-adminsdk-rkgrg-5858c2433b.json'); // Cambia el nombre aquí
+const serviceAccount = require('../../../novamarketapp-firebase-adminsdk-rkgrg-5858c2433b.json'); // Cambia el nombre aquí
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
