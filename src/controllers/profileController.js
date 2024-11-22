@@ -30,6 +30,13 @@ const uploadImageToFirebase = async (base64Image) => {
   try {
     const base64EncodedImageString = base64Image.replace(/^data:image\/\w+;base64,/, '');
     const imageBuffer = Buffer.from(base64EncodedImageString, 'base64');
+
+    // Validación del tamaño del archivo
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+    if (imageBuffer.length > MAX_FILE_SIZE) {
+      throw new Error('El archivo es demasiado grande. Máximo 5 MB.');
+    }
+
     const fileName = `recetas-comida-profile/${Date.now()}-profile.jpg`;
     const file = bucket.file(fileName);
 
@@ -48,6 +55,7 @@ const uploadImageToFirebase = async (base64Image) => {
     throw error;
   }
 };
+
 
 // Función para actualizar el perfil del usuario
 const actualizarPerfil = async (req, res) => {

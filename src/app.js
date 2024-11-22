@@ -8,6 +8,8 @@ const path = require('path');
 
 const app = express();
 
+app.use(express.json({ limit: '10mb' })); // Cambia el límite según tus necesidades
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 // Configuración
 app.set('port', config.app.port);
 

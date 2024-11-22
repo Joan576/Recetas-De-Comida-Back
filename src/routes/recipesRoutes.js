@@ -35,6 +35,6 @@ router.post('/save', saveRecipe);
 
 // Ruta para obtener las recetas guardadas de un usuario
 router.get('/saved-recipes/:userId', getSavedRecipes);
-router.delete('/saved-recipes/:userId/:recipeId', deleteSavedRecipe);
+router.delete('/saved-recipes/:userId/:recipeId/:recipeType', deleteSavedRecipe);
 
 module.exports = router;
